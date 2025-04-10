@@ -14,10 +14,10 @@ INSERT INTO camas (habitacion_id, letra) VALUES (2, 'A'), (2, 'B'), (2, 'C'), (2
 INSERT INTO camas (habitacion_id, letra) VALUES (3, 'A'), (3, 'B'), (3, 'C'), (3, 'D');
 
 -- 🔹 Asistentes
-INSERT INTO asistentes (nombre, codigo) VALUES 
-('Ana López', 'A12345'),
-('Carlos Ruiz', 'B67890'),
-('María Pérez', 'C13579'),
-('Juan Gómez', 'D24680'),
-('Elena Torres', 'E11111'),
-('Luis Sánchez', 'F22222');
+INSERT INTO asistentes (nombre, tlf, codigo) VALUES 
+('Ana López', '612345678', 'A12345'),
+('Carlos Ruiz', '622345679', 'B67890'),
+('María Pérez', '632345680', 'C13579'),
+('Juan Gómez', '642345681', 'D24680'),
+('Elena Torres', '652345682', 'E11111'),
+('Luis Sánchez', '662345683', 'F22222');
