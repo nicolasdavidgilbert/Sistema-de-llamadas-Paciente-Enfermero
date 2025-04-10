@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Asistentes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/asistentes.css') }}">
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <h1>Asistentes Registrados</h1>
+    <table>
+        <thead>
+            <tr>
+                <th class="modo-edicion editar" style="display:none;">Editar</th>
+                <th class="modo-edicion eliminar" style="display:none;">Eliminar</th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Código</th>
+                <th>Nº Llamadas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asistente in asistentes %}
+            <tr data-id="{{ asistente.id }}">
+                <td class="modo-edicion editar" style="display:none;">
+                    <button class="btn-editar" onclick="editar('{{ asistente.id }}')">📝</button>
+                </td>
+                <td class="modo-edicion eliminar" style="display:none;">    
+                    <button class="btn-eliminar" onclick="añadirEliminar('{{ asistente.id }}')">🗑️</button>
+                </td>
+                <td>{{ asistente.id }}</td>
+                <td>{{ asistente.nombre }}</td>
+                <td>{{ asistente.tlf }}</td>
+                <td>
+                    <div class="codigo-contenedor">
+                      <div>
+                        <span class="codigo-oculto">******</span>
+                        <span class="codigo-real" style="display: none;">{{ asistente.codigo }}</span>
+                      </div>
+                      <div>
+                        <i class="bx bx-hide show-hide"></i>
+                      </div>
+                    </div>
+                </td>                  
+                <td>{{ asistente.num_llamadas }}</td>
+            </tr>
+            {% endfor %}
+            <tr id="fila-nueva" class="ocultar">
+                <td class="modo-edicion" style="display:none;"></td>
+                <td class="modo-edicion" style="display:none;"></td>
+                <td>--</td>
+                <td><input type="text" id="nuevo-nombre" placeholder="Nombre"></td>
+                <td><input type="text" id="nuevo-telefono" placeholder="Teléfono" maxlength="9"></td>
+                <td><input type="text" id="nuevo-codigo" placeholder="Código" maxlength="6"></td>
+                <td>--</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="botones">
+        <button class="boton-crear ocultar" onclick="crearAsistente()">+ Añadir asistente</button>
+        <button class="boton-editar ocultar" onclick="modoEditar()" >Modo edición</button>
+        <div id="editar">
+            <span class="btn-aceptar modo-edicion" onclick="confirmar()" style="display:none;">✅</span>
+            <span class="btn-cancelar modo-edicion" onclick="cancelar()" style="display:none;">❌</span>
+        </div>
+        <p id="mensaje"></p>
+    </div>
+    <!-- Modal de confirmación -->
+    <div class="modal" id="modalConfirmacion">
+        <div class="modal-contenido">
+            <p id="modalMensaje">¿Está seguro?</p>
+            <div class="modal-botones">
+            <button id="modalSi">Sí</button>
+            <button id="modalNo">No</button>
+            </div>
+        </div>
+    </div>
+      
+    <script src="{{ url_for('static', filename='js/admin/añadir-asistente.js') }}"></script>
+    
+</body>
+</html>

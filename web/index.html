@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>API – Sistema Paciente-Enfermero</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/api.css') }}">
+</head>
+<body class="fade-in">
+    <div class="contenedor">
+        <h1>📞 API – Sistema Paciente-Enfermero</h1>
+        <p class="intro">Consulta rápida de rutas disponibles:</p>
+        <ul class="rutas">
+            <li><a href="/llamada/101/a">🔹 <b>/llamada/&lt;habitacion&gt;/&lt;cama&gt;</b> → Registrar nueva llamada</a></li>
+            <li><a href="/aceptar/101/a">🔹 <b>/aceptar/&lt;habitacion&gt;/&lt;cama&gt;</b> → Aceptar llamada</a></li>
+            <li><a href="/presencia/101/a">🔹 <b>/presencia/&lt;habitacion&gt;/&lt;cama&gt;</b> → Registrar presencia física</a></li>
+            <li><a href="/enroll">🔹 <b>/enroll</b> → Enrolar asistente</a></li>
+            <li><a href="/desenroll">🔹 <b>/desenroll</b> → Desenrolar asistente</a></li>
+            <li><a href="/habitaciones">🔹 <b>/habitaciones</b> → Vista de habitaciones disponibles</a></li>
+            <li><a href="/admin" id="admin"><span class="admin">♦️ <b>/admin</b> → ZONA ADMIN</span></a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Enrolar asistente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enroll.css') }}">
+</head>
+<body {% if not error %}class="fade-in"{% endif %}>
+    <div class="contenedor-formulario">
+        <h2>🩺 Enrolar asistente</h2>
+        <form method="post" id="form-enroll" data-error="{{ error if request.method == 'POST' else '' }}">
+            <label for="codigo">Código de asistente:</label>
+            <input type="text" id="codigo" name="codigo" maxlength="6" required placeholder="Ej: ABC123">
+        
+            <!-- Añade esto ⬇️ -->
+            <input type="hidden" name="habitacion" value="{{ habitacion }}">
+            <input type="hidden" name="cama" value="{{ cama }}">
+        
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+        
+            <button type="submit">Enrolar</button>
+        </form>
+        
+    </div>
+    <script src="{{ url_for('static', filename='js/enroll.js') }}"></script>
+
+</body>
+</html>

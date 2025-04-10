@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Terminal vinculado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enrolado.css') }}">
+</head>
+<body class="fade-in">
+    <div class="contenedor-confirmacion">
+        <h2>✅ Terminal vinculado correctamente</h2>
+        <p>Asistente con código: <strong>{{ codigo }}</strong></p>
+        <div class="botones">
+            <a class="boton" href="{{ url_for('routes.listado_habitaciones') }}">Ir a habitaciones</a>
+            <a class="boton boton-secundario" href="{{ url_for('routes.desenroll') }}">Desvincular terminal</a>
+        </div>
+
+    </div>
+</body>
+</html>

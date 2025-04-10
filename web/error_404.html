@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>404 - No encontrado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error_404.css') }}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>😷 404</h1>
+        <p class="mensaje">No hemos encontrado la habitación o cama que buscas.</p>
+        <p class="detalle">Puede que el paciente haya sido dado de alta 🏥 o que estés en la sala equivocada.</p>
+        <a href="{{ url_for('routes.listado_habitaciones') }}" class="boton">Volver al listado de habitaciones</a>
+    </div>
+</body>
+</html>

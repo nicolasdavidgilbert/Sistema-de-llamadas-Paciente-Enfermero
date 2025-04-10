@@ -1,0 +1,82 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #d4ecff;
+    color: #333;
+    margin: 0;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.fade-in {
+    animation: aparecer 0.5s ease-in-out both;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    display: block;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid transparent;
+}
+
+a:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateY(-3px);
+    border-color: #0056b3;
+    box-shadow: 0 6px 14px rgba(0, 123, 255, 0.25);
+}
+
+@media (max-width: 990px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    body {
+        margin-top: 2%;
+        font-size: 50px;
+        align-items: start;
+        height: 100%;
+    }
+
+    h2 {
+        font-size: 80px;
+    }
+    a{
+        font-size: 50px;
+    }
+
+}

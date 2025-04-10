@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <title>Habitación 101A</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/habitacion.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+
+<body class="fade-in">
+    
+
+    <span id="datos" data-habitacion="{{ habitacion }}" data-cama="{{ cama }}"></span>
+
+    <div class="habitacion">
+        <h2>Habitación {{ habitacion }} - Cama {{ cama|upper }}</h2>
+        <div class="botonera">
+            <button id="btnLlamada">Llamar enfermero</button>
+            <div id="led" class="led"></div>
+            <button id="btnPresencia">Registrar presencia</button>
+        </div>
+        <a href="{{ url_for('routes.listado_habitaciones') }}" id="volver" class="boton-volver">← Volver a habitaciones</a>
+    </div>
+    
+
+    <script src="{{ url_for('static', filename='js/habitacion.js') }}"></script>
+</body>
+</html>

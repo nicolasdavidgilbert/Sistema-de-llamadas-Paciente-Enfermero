@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Terminal desvinculado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/desenrolado.css') }}">
+</head>
+<body class="fade-in">
+    <div class="contenedor-confirmacion">
+        <h2>🔓 Terminal desvinculado correctamente</h2>
+        <p>La cookie del asistente ha sido eliminada.</p>
+        <div class="botones">
+            <a class="boton home" href="{{ url_for('routes.index') }}">HOME</a>
+            <a class="boton" href="{{ url_for('routes.enroll') }}">Volver a enrolar</a>
+        </div>
+
+    </div>
+</body>
+</html>

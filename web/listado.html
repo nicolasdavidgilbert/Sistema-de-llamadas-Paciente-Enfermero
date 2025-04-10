@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Habitaciones disponibles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listado.css') }}">
+</head>
+<body class="fade-in">
+    <h2>📋 Habitaciones y Camas Disponibles</h2>
+    <div class="grid">
+        {% for cama in camas %}
+            <a href="{{ url_for('routes.habitacion', habitacion=cama.habitacion, cama=cama.cama) }}">
+                Habitación {{ cama.habitacion }} - Cama {{ cama.cama.upper() }}
+            </a>
+        {% endfor %}
+    </div>
+    <script src="{{ url_for('static', filename='js/listado.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+    padding: 30px;
+    color: #333;
+}
+
+/* Título */
+h1 {
+    margin-bottom: 20px;
+    color: #007acc;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* Tabla general */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+    background-color: #007acc;
+    color: white;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f9ff;
+}
+
+/* Bordes */
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+
+/* Inputs en la fila de nuevo asistente */
+input[type="text"] {
+    width: 90%;
+    padding: 8px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#fila-nueva input[type="text"]:focus {
+    border-color: #007acc;
+}
+
+/* Botón añadir asistente */
+.boton-editar,
+.boton-crear {
+    background-color: #007acc;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.boton-editar:hover,
+.boton-crear:hover {
+    background-color: #005f99;
+}
+
+#editar .btn-cancelar:active, 
+#editar .btn-aceptar:active,
+.boton-editar:active,
+.boton-crear:active {
+    transform: scale(0.80);
+}
+
+
+#botones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto; /* dos filas */
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+#botones #editar{
+    grid-column: 1 / span 2; /* ocupa ambas columnas */
+}
+
+
+#mensaje {
+    grid-column: span 2;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+
+.codigo-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.codigo-real, .codigo-oculto {
+    font-family: monospace;
+    text-align: center;
+}
+
+.show-hide {
+    font-size: 18px;
+    color: #919191;
+    cursor: pointer;
+}
+
+.modo-edicion button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+#editar .btn-cancelar:hover, 
+#editar .btn-aceptar:hover,
+.modo-edicion button:hover {
+    transform: scale(1.1);
+}
+.aceptar-cancelar {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    gap: 10px; /* Separación entre botones */
+    width: 100%;
+    height: 100%;
+}
+#editar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto; /* dos filas */
+    gap: 85px;
+    align-items: center;
+    justify-items: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#editar .btn-cancelar, 
+#editar .btn-aceptar{
+    font-size: 200%;
+}
+
+#editar .btn-cancelar:hover, 
+#editar .btn-aceptar:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-contenido {
+    background: #fff;
+    padding: 20px;
+    margin: 15% auto;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-botones button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-botones button:first-child {
+    background-color: #d9534f;
+    color: white;
+  }
+  
+  .modal-botones button:last-child {
+    background-color: #5bc0de;
+    color: white;
+  }
+  

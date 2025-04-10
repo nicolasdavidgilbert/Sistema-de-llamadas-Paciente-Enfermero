@@ -1,0 +1,18 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-color: #e9f7ef;
+  }
+  
+  .mensaje {
+    font-size: 24px;
+    color: #2e7d32;
+    margin-bottom: 20px;
+  }
+  
+  .submensaje {
+    font-size: 18px;
+    color: #555;
+  }
+  

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Listado de llamadas 24h</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/llamadas.css') }}">
+</head>
+
+<body>
+    <div class="encabezado">
+        <h1>Listado de llamadas en las últimas 24 horas</h1>
+        <div>
+            <a href="/admin/llamadas/csv" class="boton-descarga">📥 Descargar CSV</a>
+            <a href="/admin/llamadas/pdf" class="boton-descarga">📄 Descargar PDF</a>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cama</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Asistente</th>
+                <th>Fecha Aceptación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for l in llamadas %}
+            <tr class="
+                    {% if l.estado == 'pendiente' %}
+                        llamada-pendiente
+                    {% elif l.estado == 'aceptada' %}
+                        llamada-aceptada
+                    {% elif l.estado == 'presente' %}
+                        llamada-presente
+                    {% endif %}
+                ">                
+                <td>{{ l.id }}</td>
+                <td>{{ l.cama_id }}</td>
+                <td>{{ l.fecha.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+                <td>{{ l.estado }}</td>
+                <td>{{ l.asistente_id or "N/A" }}</td>
+                <td>{{ l.fecha_aceptacion.strftime("%Y-%m-%d %H:%M:%S") if l.fecha_aceptacion else "Sin aceptar" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
