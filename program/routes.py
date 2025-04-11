@@ -8,16 +8,13 @@ import csv
 from dotenv import load_dotenv
 
 load_dotenv()  # Carga las variables del archivo .env
-IP = os.getenv("IP")
+URL_BASE = os.getenv("URL_BASE")
 USER = os.getenv("USER")
 TOKEN = os.getenv("TOKEN")
 
+
 routes = Blueprint("routes", __name__)
 app = Flask(__name__, template_folder='web')
-
-@routes.route("/api/ip")
-def get_ip():
-    return jsonify({"ip": IP})
 
 
 @routes.route('/habitacion/<int:habitacion>/<string:cama>')
@@ -99,7 +96,7 @@ def nueva_llamada(habitacion, cama):
         db.session.commit()
 
         mensaje = f"Solicitud de asistencia en habitación <b><font color='#ff0000'>{habitacion}</font></b> y cama <b><font color='#ff0000'>{cama}</font></b>."
-        enlace_aceptar = f"http://{IP}:8080/aceptar/{habitacion}/{cama}"
+        enlace_aceptar = f"{URL_BASE}/aceptar/{habitacion}/{cama}"
         url = "https://api.pushover.net/1/messages.json"
         data = {
             "token": TOKEN,

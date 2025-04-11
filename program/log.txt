@@ -1,4 +1,4 @@
-2025-04-10 13:59:47,202 - ERROR - Exception on /admin/asistentes [GET]
+2025-04-11 07:49:41,527 - ERROR - Exception on /admin/asistentes [GET]
 Traceback (most recent call last):
   File "/program/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
     self.dialect.do_execute(
