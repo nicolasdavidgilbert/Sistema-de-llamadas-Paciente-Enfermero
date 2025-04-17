@@ -2,6 +2,6 @@
 .env
 __pycache__
 log.txt
-*.pdf
-*.csv
+# *.pdf
+# *.csv
 *.pyc
