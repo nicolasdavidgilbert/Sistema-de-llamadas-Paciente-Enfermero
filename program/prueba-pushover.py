@@ -2,8 +2,8 @@ import requests
 import time
 
 
-USER = 'ui7zuhcejeynzdnw4cc7qfedj6cvnd'
-TOKEN = 'aomxf28deq3iwza8qjkurzgjfgweb2'
+USER = '***'
+TOKEN = '***'
 
 pedido_id = 1
 url_confirmacion = f"http://localhost:5000/confirmar?pedido={pedido_id}"
