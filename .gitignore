@@ -1,7 +1,7 @@
 .venv
 .env
 __pycache__
-log.txt
+# */*.txt
 # *.pdf
 # *.csv
 *.pyc
