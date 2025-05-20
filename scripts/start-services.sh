@@ -67,7 +67,7 @@ if [ ! -f requirements.txt ]; then
 fi
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r /program/requieriments.txt
+pip install -r ../program/requieriments.txt
 deactivate
 echo "✅ Dependencias de Python instaladas."
 
