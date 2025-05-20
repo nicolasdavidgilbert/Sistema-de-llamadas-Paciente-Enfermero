@@ -57,7 +57,7 @@ htpasswd -bc /etc/nginx/.htpasswd_admin admin admin
 # Ejecutar comandos de Python
 echo "🐍 Configurando entorno Python..."
 if [ ! -d /program ]; then
-    echo "❌ Error: El directorio /program no existe."
+    echo "❌ Error: El directorio ../program no existe."
     exit 1
 fi
 cd /program
