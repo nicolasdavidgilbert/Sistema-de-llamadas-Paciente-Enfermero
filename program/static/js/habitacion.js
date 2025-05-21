@@ -43,7 +43,7 @@ function actualizarEstado() {
         .then(res => res.json())
         .then(data => {
             const led = document.getElementById("led");
-            if (data.estado === "aceptada") {
+            if (data.estado === "atendida") {
                 led.classList.add("encendido");
             } else {
                 led.classList.remove("encendido");
