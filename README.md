@@ -178,7 +178,7 @@ Cada llamada genera una notificación push al móvil del asistente con:
 Configurado en el archivo `.env`:
 
 ```env
-URL_BASE=localhost:8080
+URL_BASE=http://tu_ip:8080
 USER=tu_user_de_pushover
 TOKEN=tu_token_de_aplicacion
 ```
