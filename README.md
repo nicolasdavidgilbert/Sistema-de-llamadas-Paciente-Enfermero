@@ -118,9 +118,7 @@ Luego, para iniciar el servidor:
     ```
 - El servicio web accesible en: `http://localhost:8080`
 
-### 3. 🧪 Simulación de Llamadas
-
-Usa un navegador o un pulsador WiFi configurado para enviar peticiones HTTP:
+### 3. 🧪 Simulación de Llamadas (Actualizado)
 
 - Nueva llamada:  
   ```
@@ -130,6 +128,8 @@ Usa un navegador o un pulsador WiFi configurado para enviar peticiones HTTP:
   ```
   GET http://localhost:8080/presencia/104/b
   ```
+
+> Nota: Asegúrate de que las IPs de los relés estén configuradas correctamente en la base de datos.
 
 ### 4. 🔐 Autenticación y Enrolamiento
 
@@ -188,6 +188,22 @@ TOKEN=tu_token_de_aplicacion
 - Motor: MariaDB
 - Script de creación: `mariaDB/crear_tablas.sql`
 - Datos de prueba: `mariaDB/datos_prueba.sql`
+
+## 🆕 Cambios Recientes
+
+### 1. Lógica de Control de Relés
+- Se agregó lógica para encender el relé asociado a una cama cuando se acepta una llamada.
+- Se agregó lógica para apagar el relé cuando se registra la presencia física.
+
+### 2. Actualización de Modelos ORM
+- El modelo `Cama` ahora incluye el campo `ip_rele` para almacenar la IP del relé asociado.
+- El modelo `Llamada` utiliza un ENUM para el campo `estado` con los valores `'pendiente', 'atendida', 'presente'`.
+
+### 3. Rango Dinámico de IPs para Camas
+- Las camas ahora tienen asignaciones de IP dinámicas en el rango `127.0.100.1` a `127.0.199.255`.
+
+### 4. Corrección de Errores
+- Se corrigió un problema en la ruta `/presencia/<habitacion>/<cama>` donde el estado `'aceptada'` fue reemplazado por `'atendida'` para alinearse con el esquema de la base de datos.
 
 ## 🧰 Tecnologías
 
