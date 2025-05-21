@@ -1,0 +1,46 @@
+.site-header {
+    margin-bottom: 30px;
+    background: transparent;
+  }
+  
+  .site-header .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .site-header .admin a,
+  .site-header .main-nav a,
+  .site-header .page-title {
+    display: inline-block;
+    background-color: #007acc;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+  }
+  
+  .site-header .page-title {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+  
+  .site-header .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .site-header .admin a:hover,
+  .site-header .main-nav a:hover {
+    background-color: #005f99;
+    transform: scale(1.05);
+  }

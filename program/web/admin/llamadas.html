@@ -5,16 +5,22 @@
     <title>Listado de llamadas 24h</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/llamadas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/header.css') }}">
+
 </head>
 
 <body>
-    <div class="encabezado">
-        <h1>Listado de llamadas en las últimas 24 horas</h1>
-        <div>
-            <a href="/admin/llamadas/csv" class="boton-descarga">📥 Descargar CSV</a>
-            <a href="/admin/llamadas/pdf" class="boton-descarga">📄 Descargar PDF</a>
+    <header class="site-header">
+        <div class="container">
+            <h2 class="admin"><a href="/admin">Admin</a></h2>
+            <h1 class="page-title">Listado de llamadas en las últimas 24 horas</h1>
+            <nav class="main-nav">
+            <ul>
+                <li><a href="/admin/asistentes">Asistentes</a></li>
+            </ul>
+            </nav>
         </div>
-    </div>
+    </header>
     <table>
         <thead>
             <tr>
@@ -47,6 +53,10 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="descargas">
+        <a href="/admin/llamadas/csv" class="boton-descarga">📥 Descargar CSV</a>
+        <a href="/admin/llamadas/pdf" class="boton-descarga">📄 Descargar PDF</a>
+    </div>
 </body>
 
 </html>

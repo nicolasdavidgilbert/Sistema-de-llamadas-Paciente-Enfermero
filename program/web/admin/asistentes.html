@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <title>Lista de Asistentes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/asistentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/header.css') }}">
+
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
 </head>
 <body>
-    <h1>Asistentes Registrados</h1>
+    <header class="site-header">
+        <div class="container">
+            <h2 class="admin"><a href="/admin">Admin</a></h2>
+            <h1 class="page-title">Asistentes Registrados</h1>
+            <nav class="main-nav">
+            <ul>
+                <li><a href="/admin/asistencias">Asistencias</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+      
     <table>
         <thead>
             <tr>
