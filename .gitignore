@@ -1,7 +1,7 @@
 .venv
 .env
 __pycache__
-# */*.txt
-# *.pdf
-# *.csv
+*.txt
+*.pdf
+*.csv
 *.pyc
