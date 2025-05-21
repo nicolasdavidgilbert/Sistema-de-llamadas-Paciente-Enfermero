@@ -103,6 +103,7 @@ def nueva_llamada(habitacion, cama):
             "user": USER,
             "message": mensaje,
             "priority": 2,
+            "sound": "alerta",
             "retry": 30,
             "expire": 180,
             "html": 1,
@@ -138,10 +139,20 @@ def aceptar_llamada(habitacion, cama):
             return jsonify({"error": "Asistente no válido"}), 403
             
 
-        llamada.estado = 'aceptada'
+        llamada.estado = 'atendida'
         llamada.fecha_aceptacion = datetime.now()
         llamada.asistente_id = asistente.id
         db.session.commit()
+
+        # Encender el relay asociado a la cama
+        try:
+            ip_rele = cama_obj.ip_rele  # Obtener la IP del relé asociado a la cama
+            url = f"http://{ip_rele}/relay/0?turn=on"
+            response = requests.get(url)
+            if response.status_code != 200:
+                logging.warning(f"⚠️ No se pudo encender el relay para la cama {cama} en la habitación {habitacion}")
+        except Exception as e:
+            logging.error(f"❌ Error al intentar encender el relay: {e}")
 
         return render_template("ack.html"), 200
 
@@ -156,7 +167,7 @@ def registrar_presencia(habitacion, cama):
     try:
         habit = Habitacion.query.filter_by(numero=habitacion).first()
         cama_obj = Cama.query.filter_by(habitacion_id=habit.id, letra=cama).first()
-        llamada = Llamada.query.filter_by(cama_id=cama_obj.id, estado='aceptada').order_by(Llamada.fecha.desc()).first()
+        llamada = Llamada.query.filter_by(cama_id=cama_obj.id, estado='atendida').order_by(Llamada.fecha.desc()).first()
 
         if not llamada:
             return jsonify({"error": "No hay llamada atendida"}), 404
@@ -166,6 +177,16 @@ def registrar_presencia(habitacion, cama):
 
         db.session.add(nueva_presencia)
         db.session.commit()
+
+        # Apagar el relay asociado a la cama
+        try:
+            ip_rele = cama_obj.ip_rele  # Obtener la IP del relé asociado a la cama
+            url = f"http://{ip_rele}/relay/0?turn=off"
+            response = requests.get(url)
+            if response.status_code != 200:
+                logging.warning(f"⚠️ No se pudo apagar el relay para la cama {cama} en la habitación {habitacion}")
+        except Exception as e:
+            logging.error(f"❌ Error al intentar apagar el relay: {e}")
 
         return jsonify({"message": "✅ Presencia registrada exitosamente"}), 200
     except Exception as e:
@@ -221,5 +242,21 @@ def desenroll():
     response.delete_cookie("asistente")
     return response
 
+@routes.route("/<string:ip>/relay/0", methods=["GET"])
+def enceder_apagar_relay(ip):
+    try:
+        estado = request.args.get("turn")  # Captura el parámetro de consulta 'turn'
+        if not estado:
+            return jsonify({"error": "Falta el parámetro 'turn'"}), 400
+
+        url = f"http://{ip}/relay/0?turn={estado}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            return jsonify({"message": "✅ Estado del relay actualizado exitosamente"}), 200
+        else:
+            return jsonify({"error": "Error al actualizar el estado del relay"}), 500
+    except Exception as e:
+        logging.error(f"❌ Error al encender/apagar relay: {e}")
+        return jsonify({"error": "Error al encender/apagar relay"}), 500
 
 

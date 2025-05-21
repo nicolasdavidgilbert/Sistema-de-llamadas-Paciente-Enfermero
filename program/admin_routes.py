@@ -3,7 +3,6 @@ from models import db, Habitacion, Cama, Llamada, Presencia, Asistente
 from datetime import datetime, timedelta
 import logging
 import csv
-
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Table, TableStyle
@@ -18,7 +17,7 @@ admin_routes = Blueprint("admin_routes", __name__)
 def index():
     return render_template("admin/index.html"),200
 
-@admin_routes.route("/admin/llamadas", methods=['GET'])
+@admin_routes.route("/admin/asistencias", methods=['GET'])
 def ver_llamadas():
     ahora = datetime.now()
     hace_24h = ahora - timedelta(hours=24)

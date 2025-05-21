@@ -13,6 +13,7 @@ class Habitacion(db.Model):
 class Cama(db.Model):
     __tablename__ = 'camas'
     id = db.Column(db.Integer, primary_key=True)
+    ip_rele = db.Column(db.String(15), nullable=False)  # Added 'ip_rele' field
     habitacion_id = db.Column(db.Integer, db.ForeignKey('habitaciones.id'), nullable=False)
     letra = db.Column(db.String(1), nullable=False)
     llamadas = db.relationship('Llamada', backref='cama', lazy=True)
@@ -37,7 +38,7 @@ class Llamada(db.Model):
     cama_id = db.Column(db.Integer, db.ForeignKey('camas.id'), nullable=False)
     fecha = db.Column(db.DateTime, default=datetime.now)
     fecha_aceptacion = db.Column(db.DateTime, nullable=True)
-    estado = db.Column(db.Enum('pendiente', 'aceptada', 'presente', name='estado_llamada'), default='pendiente')
+    estado = db.Column(db.Enum('pendiente', 'atendida', 'presente', name='estado_llamada'), default='pendiente')
     asistente_id = db.Column(db.Integer, db.ForeignKey('asistentes.id'), nullable=True)
     presencia = db.relationship('Presencia', backref='llamada', uselist=False)
 
