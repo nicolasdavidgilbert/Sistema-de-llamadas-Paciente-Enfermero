@@ -65,6 +65,7 @@ if [ ! -f requirements.txt ]; then
     echo "❌ Error: requirements.txt no existe en /program."
     exit 1
 fi
+exho "Tu ip y los tockens" /program/.env
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r /program/requirements.txt
