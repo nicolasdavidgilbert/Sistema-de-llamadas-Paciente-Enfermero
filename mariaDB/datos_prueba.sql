@@ -7,11 +7,23 @@ INSERT INTO habitaciones (planta, numero) VALUES (1, 103);
 
 -- 🔹 Camas para cada habitación (4 camas por habitación)
 -- Habitación 101
-INSERT INTO camas (habitacion_id, letra) VALUES (1, 'A'), (1, 'B'), (1, 'C'), (1, 'D');
+INSERT INTO camas (habitacion_id, letra, ip_rele) VALUES 
+(1, 'A', '127.0.100.1'),
+(1, 'B', '127.0.100.2'),
+(1, 'C', '127.0.100.3'),
+(1, 'D', '127.0.100.4');
 -- Habitación 102
-INSERT INTO camas (habitacion_id, letra) VALUES (2, 'A'), (2, 'B'), (2, 'C'), (2, 'D');
+INSERT INTO camas (habitacion_id, letra, ip_rele) VALUES 
+(2, 'A', '127.0.100.5'),
+(2, 'B', '127.0.100.6'),
+(2, 'C', '127.0.100.7'),
+(2, 'D', '127.0.100.8');
 -- Habitación 103
-INSERT INTO camas (habitacion_id, letra) VALUES (3, 'A'), (3, 'B'), (3, 'C'), (3, 'D');
+INSERT INTO camas (habitacion_id, letra, ip_rele) VALUES 
+(3, 'A', '127.0.100.9'),
+(3, 'B', '127.0.100.10'),
+(3, 'C', '127.0.100.11'),
+(3, 'D', '127.0.100.12');
 
 -- 🔹 Asistentes
 INSERT INTO asistentes (nombre, tlf, codigo) VALUES 
